@@ -10,24 +10,26 @@ import { Router } from '@angular/router';
 })
 export class CustomerComponent implements OnInit {
 
-  constructor(private _service : CustomerService) { }
-
-  router: Router;
+  constructor(private _service : CustomerService, private _router: Router) { }
 
   ngOnInit() {
   }
 
   onCreate(form : NgForm)
   {
+
     this._service.createCustomer(form).subscribe(
       (data)=>{
-        return data;
-        this.router.navigate(['/']);
+        //console.log("inserted");
+        this._router.navigate(['/home']);
+       
       },
       (err)=>{
         return err;
       }
+      
     )
+    
   }
 
 }

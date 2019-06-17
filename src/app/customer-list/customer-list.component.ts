@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from './../shared/customer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-list',
@@ -9,7 +10,7 @@ import { CustomerService } from './../shared/customer.service';
 export class CustomerListComponent implements OnInit {
 
   private customers : any;//always use any, never define specific(you will get error)
-  constructor(private _service: CustomerService) { }
+  constructor(private _service: CustomerService, private _router: Router) { }
 
   ngOnInit() {
     this.getCustomers();
@@ -34,7 +35,8 @@ export class CustomerListComponent implements OnInit {
     // console.log(id);
     this._service.updateCustomer(id).subscribe(
       (data)=>{
-        return data;
+       //console.log("deleted");
+       this._router.navigate(['/home']);
       },
       (err)=>{
         console.log(err);
@@ -47,12 +49,14 @@ export class CustomerListComponent implements OnInit {
     // console.log(id);
     this._service.deleteCustomer(id).subscribe(
       (data)=>{
-        return ImageData;
+       //console.log("deleted");
+       this._router.navigate(['/about']);
       },
       (err)=>{
         console.log(err);
       }
     )
   }
+
 }
  
