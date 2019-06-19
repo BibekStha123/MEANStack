@@ -18,4 +18,7 @@
         <button class="btn btn-outline-danger" (click)="onDelete(customer._id)">Delete</button>
       </tr>
     </tbody>
+    <div class="alert alert-dange" *ngIf="delete">
+      Deleted Successfully
+    </div>
   </table>

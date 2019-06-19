@@ -12,6 +12,8 @@ export class CustomerComponent implements OnInit {
 
   constructor(private _service : CustomerService, private _router: Router) { }
 
+  submitted: boolean;
+
   ngOnInit() {
   }
 
@@ -20,16 +22,20 @@ export class CustomerComponent implements OnInit {
 
     this._service.createCustomer(form).subscribe(
       (data)=>{
-        //console.log("inserted");
+        // console.log(data);
+        
         this._router.navigate(['/home']);
-       
+        this.submitted = true;
+        setTimeout(function(){
+          this.submitted=false,
+          3000
+        });
       },
       (err)=>{
         return err;
       }
       
     )
-    
   }
 
 }

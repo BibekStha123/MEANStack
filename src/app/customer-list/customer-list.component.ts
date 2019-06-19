@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class CustomerListComponent implements OnInit {
 
   private customers : any;//always use any, never define specific(you will get error)
+  delete: boolean;
+
   constructor(private _service: CustomerService, private _router: Router) { }
 
   ngOnInit() {
@@ -47,15 +49,21 @@ export class CustomerListComponent implements OnInit {
   onDelete(id)
   {
     // console.log(id);
-    this._service.deleteCustomer(id).subscribe(
-      (data)=>{
-       //console.log("deleted");
-       this._router.navigate(['/about']);
-      },
-      (err)=>{
-        console.log(err);
-      }
-    )
+    if(confirm("Are you sure you want to delete?")){
+      this._service.deleteCustomer(id).subscribe(
+        (data)=>{
+         //console.log("deleted");
+         this.delete=true;
+         setTimeout(function(){
+           this.delete =false,
+           3000
+         });
+        },
+        (err)=>{
+          console.log(err);
+        }
+      )
+    }
   }
 
 }

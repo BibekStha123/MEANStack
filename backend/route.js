@@ -28,7 +28,17 @@ router.post('/submit', (req, res)=>{
 });
 
 router.put('/edit/:id', (req, res)=>{
-    console.log(req.params.id);
+    // console.log(req.params.id);
+    db.customerlist.findByIdAndUpdate(req.params.id, (err, data)=>{
+        if(data){
+            console.log(data);
+            /* db.customerlist.name = req.body.name,
+            db.customerlist.mobile = req.body.mobile,
+            db.customerlist.address = req.body.address,
+            db.customerlist.email = req.body.email */
+        }
+
+    })
 });
 
 router.delete('/delete/:id', (req, res)=>{
