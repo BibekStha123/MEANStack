@@ -4,7 +4,6 @@
         <th>Name</th>
         <th>Mobile</th>
         <th>Address</th>
-        <th>Email</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -13,7 +12,6 @@
         <td>{{ customer.name }}</td>
         <td>{{ customer.mobile }}</td>
         <td>{{ customer.address }}</td>
-        <td>{{ customer.email }}</td>
         <button class="btn btn-outline-primary" (click)="onEdit(customer._id)">Edit</button>&nbsp;
         <button class="btn btn-outline-danger" (click)="onDelete(customer._id)">Delete</button>
       </tr>

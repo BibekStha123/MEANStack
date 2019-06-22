@@ -1,5 +1,5 @@
 const mongojs = require('mongojs');
-const db = mongojs('customers', ['customerlist']);
+const db = mongojs('customers', ['customerlist', 'users']);
 
 
 const database = {

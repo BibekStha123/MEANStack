@@ -17,7 +17,7 @@ export class CustomerService {
 
   getCustomer()
   {
-    return this.http.get(this.uri+'/', {headers: this.headers});
+    return this.http.get(this.uri+'/getAll', {headers: this.headers});
   }
 
   updateCustomer(id: string)
@@ -28,6 +28,16 @@ export class CustomerService {
   deleteCustomer(id: string)
   {
     return this.http.delete(this.uri+'/delete/'+id, {headers: this.headers});
+  }
+
+  userSignup(user: any)
+  {
+    return this.http.post(this.uri+'/signup', user, {headers: this.headers});
+  }
+
+  userLogin(user: any)
+  {
+    return this.http.post(this.uri+'/login', user, {headers: this.headers});
   }
 
 }
