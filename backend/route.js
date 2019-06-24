@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const database = require('./database');
 const db = database.db;
-
+const auth = require('./auth');
 
 
 //users
@@ -13,7 +13,10 @@ router.post('/signup', (req, res)=>{
     // console.log(req.body);
     db.users.find({email: req.body.email}, (err, data)=>{
         if(data.length > 0){
-            console.log("already exist");
+            // console.log("already exist");
+            return res.status(404).send({
+                "message": "User already exist."
+            })    
         }else{
             bcrypt.hash(req.body.password, 10, (err, hash)=>{
                 if(err){
@@ -22,6 +25,10 @@ router.post('/signup', (req, res)=>{
                     db.users.save({
                         email: req.body.email,
                         password: hash
+                    });
+
+                    res.json({
+                        "message": "inserted"
                     });
                 }
                 console.log("inserted");
@@ -42,15 +49,23 @@ router.post('/login', (req, res)=>{
                         userId: data._id
                     }, "private key");
         
-                console.log(token);
-                res.send(token);
+                // console.log("token");
+                res.json({
+                   "response": token
+                });
 
                 }else{
-                    console.log("password doesnot matched");                  
+                    // console.log("password doesnot matched"); 
+                    return res.status(404).send({
+                        message: "password doesnot matched"
+                    });
                 }
             })
         }else{
-            console.log("User doesnot exist");            
+            // console.log("User doesnot exist");   
+            return res.status(404).send({
+                message: "User doesnot exist"
+            });        
         }
     })
 })
@@ -74,7 +89,9 @@ router.post('/submit', (req, res)=>{
         email: req.body.email
     });
 
-    res.redirect('/');
+    return res.status(200).send({
+        message: "customer added"
+    });
     // console.log(req.body);
     
 });
@@ -98,6 +115,9 @@ router.delete('/delete/:id', (req, res)=>{
     db.customerlist.remove({
         _id: mongojs.ObjectId(req.params.id)
     });
+    return res.status(200).json({
+        message: "Deleted"
+    })
 });
 
 

@@ -22,8 +22,8 @@ export class CustomerListComponent implements OnInit {
   {
     this._service.getCustomer().subscribe(
       (data)=>{
+        // console.log(data);
         this.customers = data;
-        // console.log(this.customers);
         return this.customers;
       },
       (err)=>{
@@ -54,13 +54,7 @@ export class CustomerListComponent implements OnInit {
         (data)=>{
          //console.log("deleted");
          this.delete=true;
-         setTimeout(function(){
-           this.delete =false,
-           3000
-         });
-        },
-        (err)=>{
-          console.log(err);
+         window.location.reload();
         }
       )
     }

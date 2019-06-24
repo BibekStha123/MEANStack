@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private _router: Router, private _service: CustomerService) { }
 
+  token : any;
+
   ngOnInit() {
   }
 
@@ -19,11 +21,15 @@ export class LoginComponent implements OnInit {
   {
     this._service.userLogin(form).subscribe(
       (data)=>{
-      //  console.log(data);
+        // console.log(data);
+        this.token = data;
+        this._router.navigateByUrl('/home');
       },
       (err)=>{
-        
+        // console.log(err.error.message);
+        alert("Credential doesnot match. Register before login.");
       }
+      
     )
     // this._router.navigateByUrl('/home');
   }

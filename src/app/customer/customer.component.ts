@@ -23,13 +23,9 @@ export class CustomerComponent implements OnInit {
     this._service.createCustomer(form).subscribe(
       (data)=>{
         // console.log(data);
-        
-        this._router.navigate(['/home']);
         this.submitted = true;
-        setTimeout(function(){
-          this.submitted=false,
-          3000
-        });
+        window.location.reload();
+       
       },
       (err)=>{
         return err;

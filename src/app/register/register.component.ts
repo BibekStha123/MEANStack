@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private _router: Router, private _service: CustomerService) { }
 
+  exist: boolean;
 
   ngOnInit() {
   }
@@ -22,16 +23,17 @@ export class RegisterComponent implements OnInit {
     // console.log(form);
     this._service.userSignup(form).subscribe(
       (data)=>{
-          
+        // console.log("registerd");          
+        alert("Successfully registered. Now you can login.")
+        this._router.navigateByUrl('/login');
+
       },
       (err)=>{
-        console.log(err);
+        // console.log(err.error.message)
+        alert(err.error.message);
       }
     )
     
-    alert("Successfully registered. Now you can login.")
-    this._router.navigateByUrl('/login');
-
   }
 
 }
