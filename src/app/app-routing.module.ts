@@ -7,19 +7,20 @@ import { CustomerComponent } from './customer/customer.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes : Routes = [
     { path: '', component: RegisterComponent },
-    { path: 'home', component: CustomerComponent  },
-    { path: 'about', component:   AboutComponent },
+    { path: 'home', component: CustomerComponent, canActivate: [AuthGuard] },
+    { path: 'about', component:   AboutComponent, canActivate: [AuthGuard] },
     { path: 'login', component:   LoginComponent },
     { path: 'register', component:   RegisterComponent }
 ];
 
 @NgModule({
   imports: [
-    CommonModule,
+  CommonModule,
     RouterModule.forRoot(routes)
   ],
   exports: [

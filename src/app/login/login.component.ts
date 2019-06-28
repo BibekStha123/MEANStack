@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
 
   constructor(private _router: Router, private _service: CustomerService) { }
 
-  token : any;
 
   ngOnInit() {
   }
@@ -21,8 +20,9 @@ export class LoginComponent implements OnInit {
   {
     this._service.userLogin(form).subscribe(
       (data)=>{
-        // console.log(data);
-        this.token = data;
+        // console.log(data.response);
+
+        localStorage.setItem('response', data.response);
         this._router.navigateByUrl('/home');
       },
       (err)=>{

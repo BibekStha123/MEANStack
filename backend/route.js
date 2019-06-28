@@ -68,6 +68,15 @@ router.post('/login', (req, res)=>{
             });        
         }
     })
+    /* if(req.body.email=="bibekstha@gmail.com" && req.body.password=="bibek"){
+        return res.status(200).json({
+            message: "login succeed"
+        })
+    }else{
+        return res.status(404).json({
+            message: "login failed"
+        })
+    } */
 })
 
 //customers

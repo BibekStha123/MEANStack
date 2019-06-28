@@ -40,4 +40,13 @@ export class CustomerService {
     return this.http.post(this.uri+'/login', user, {headers: this.headers});
   }
 
+  loggedIn()
+  {
+    return !!localStorage.getItem('response');
+    /* if(localStorage.getItem('response')){
+      return true;
+    }else{
+      return false;
+    } */
+  }
 }

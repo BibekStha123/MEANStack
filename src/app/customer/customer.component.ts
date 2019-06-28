@@ -34,4 +34,10 @@ export class CustomerComponent implements OnInit {
     )
   }
 
+  onLogout()
+  {
+    localStorage.clear();
+    this._router.navigate(['/']);
+  }
+
 }
