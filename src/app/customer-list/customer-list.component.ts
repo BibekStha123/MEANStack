@@ -37,7 +37,7 @@ export class CustomerListComponent implements OnInit {
     // console.log(id);
     this._service.updateCustomer(id).subscribe(
       (data)=>{
-       //console.log("deleted");
+       console.log(data[0]['mobile']);
        this._router.navigate(['/home']);
       },
       (err)=>{

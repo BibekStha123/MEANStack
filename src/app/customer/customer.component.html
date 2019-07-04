@@ -1,11 +1,4 @@
-<div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" routerLink="/home">Home</a>
-        <a class="nav-item nav-link" routerLink="/about">About Us</a>
-      </div>
-    </nav>
-</div>
+<app-navbar></app-navbar>
 <div class="row">
   <div class="col-md-4">
     <form #f="ngForm" (ngSubmit)="onCreate(f.value)">
@@ -39,7 +32,7 @@
     </form>
   </div>
   <div class="col-md-8">
-      <app-customer-list></app-customer-list>
+    <app-customer-list></app-customer-list>
   </div>
   <div class="alert alert-success" *ngIf="submitted">
     Customer added

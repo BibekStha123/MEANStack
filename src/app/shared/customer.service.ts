@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Customer } from './customer.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -42,8 +43,8 @@ export class CustomerService {
 
   loggedIn()
   {
-    return !!localStorage.getItem('response');
-    /* if(localStorage.getItem('response')){
+    return !!localStorage.getItem('token');
+    /* if(localStorage.getItem('token')){
       return true;
     }else{
       return false;

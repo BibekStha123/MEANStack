@@ -9,6 +9,7 @@ import { CustomerService } from './shared/customer.service';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './shared/token-interceptor.service';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { TokenInterceptorService } from './shared/token-interceptor.service';
     AppComponent,
     routingComponents,
     CustomerListComponent,
+    NavbarComponent,
   ],
   imports: [
   BrowserModule,

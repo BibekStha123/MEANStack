@@ -20,9 +20,9 @@ export class LoginComponent implements OnInit {
   {
     this._service.userLogin(form).subscribe(
       (data)=>{
-        // console.log(data.response);
+        // console.log(data['token']);
 
-        localStorage.setItem('response', data.response);
+        localStorage.setItem('token', data['token']);
         this._router.navigateByUrl('/home');
       },
       (err)=>{

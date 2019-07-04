@@ -51,7 +51,7 @@ router.post('/login', (req, res)=>{
         
                 // console.log("token");
                 res.json({
-                   "response": token
+                   "token": token
                 });
 
                 }else{
@@ -107,9 +107,9 @@ router.post('/submit', (req, res)=>{
 
 router.put('/edit/:id', (req, res)=>{
     // console.log(req.params.id);
-    db.customerlist.findByIdAndUpdate(req.params.id, (err, data)=>{
+    db.customerlist.find(mongojs.ObjectId(req.params.id), (err, data)=>{
         if(data){
-            console.log(data);
+            res.json(data);
             /* db.customerlist.name = req.body.name,
             db.customerlist.mobile = req.body.mobile,
             db.customerlist.address = req.body.address,
